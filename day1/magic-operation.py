@@ -9,3 +9,41 @@
 可能会改变（因为x被取出了）
 问最多可以进行多少次magic操作？
 """
+from typing import List
+
+
+def magic_operation(arr1: List[int], arr2: List[int]) -> int:
+    arr1_average = average(arr1)
+    arr2_average = average(arr2)
+    # 选出平均值较大的一个
+    if arr1_average > arr2_average:
+        more_arr, less_arr = arr1, arr2
+        more_sum, less_sum = sum(arr1), sum(arr2)
+    else:
+        more_arr, less_arr = arr2, arr1
+        more_sum, less_sum = sum(arr2), sum(arr1)
+    more_arr.sort()  # 对较大的集合排序
+    set_less = set(less_arr)  # 将较小的集合转换为set
+    more_size, less_size = len(more_arr), len(less_arr)  # 记录两个集合的长度
+    count = 0  # 记录操作次数
+    for i in range(more_size):
+        cur = more_arr[i]  # 当前元素
+        if average(more_arr) > cur > average(less_arr) and cur not in set_less:
+            # 如果当前元素小于较大集合的平均值，大于较小集合的平均值，且不在较小集合中
+            more_sum -= cur
+            more_size -= 1
+            less_sum += cur
+            less_size += 1
+            set_less.add(cur)
+            count += 1
+    return count
+
+
+def average(arr: List[int]) -> float:
+    return sum(arr) / len(arr)
+
+
+if __name__ == '__main__':
+    arr1 = [1, 2, 3, 4, 5]
+    arr2 = [6, 7, 8, 9, 10]
+    print(magic_operation(arr1, arr2))
