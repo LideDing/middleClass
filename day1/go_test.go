@@ -19,3 +19,7 @@ func TestBracket(t *testing.T) {
 	fmt.Println(bracket("()(("))
 	fmt.Println(bracket(")"))
 }
+
+func TestKDifference(t *testing.T) {
+	fmt.Println(kDifference([]int{3,2,5,7,0,0}, 2))
+}
