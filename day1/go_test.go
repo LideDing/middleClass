@@ -21,5 +21,11 @@ func TestBracket(t *testing.T) {
 }
 
 func TestKDifference(t *testing.T) {
-	fmt.Println(kDifference([]int{3,2,5,7,0,0}, 2))
+	fmt.Println(kDifference([]int{3, 2, 5, 7, 0, 0}, 2))
+}
+
+func TestMagicOperation(t *testing.T) {
+	a := []int{1, 2, 3, 4, 5}
+	b := []int{6, 7, 8, 9, 10}
+	fmt.Println(magicOperation(a, b))
 }

@@ -10,7 +10,7 @@ func kDifference(arr []int,k int) [][]int{
 		mp[v]=1
 	}
 	var res [][]int
-	for i,_:=range mp{
+	for i:=range mp{
 		if _,ok:=mp[i+k];ok{
 			res=append(res,[]int{i,i+k})
 		}
